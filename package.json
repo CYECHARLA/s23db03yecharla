@@ -12,7 +12,13 @@
     "express": "^4.18.2",
     "http-errors": "^2.0.0",
     "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0",
     "morgan": "^1.10.0",
     "pug": "^3.0.2"
-  }
+  },
+  "description": "have a nice day\r [live server of this repo render URL](https://render-s23db03yecharla.onrender.com)",
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }
