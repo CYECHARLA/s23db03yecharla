@@ -132,7 +132,6 @@ app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 
 app.use("/resource", resourceRouter);
-
 app.use('/costumes', costumeRouter);
 
 // catch 404 and forward to error handler
