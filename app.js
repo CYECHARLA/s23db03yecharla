@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 
 var resourceRouter = require('./routes/resource');
 
-var costumeRouter = require('./routes/costumes');
+var carsRouter = require('./routes/cars');
 
 
 require('dotenv').config();
@@ -40,51 +40,52 @@ db.once("open", function(){console.log("Connection to DB succeeded")})
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var carsRouter = require('./routes/cars');
+var carsRouter = require('./routes/car');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 
-var Costume = require("./models/costume");
+var Car = require("./models/car");
 
 async function recreateDB(){
 
   // Delete everything
  
-  await Costume.deleteMany();
+  await Car.deleteMany();
  
-  let instance1 = new Costume(
+  let instance1 = new Car(
  
    {
  
-    costume_type: "IRON_MAN",
+    Make: "Toyota",
  
-    size:'Large',
+    Model:'Camry',
  
-    cost:15.4
+    Price:25000
  
    });
  
-   let instance2 = new Costume(
+   let instance2 = new Car(
  
     {
  
-     costume_type: "CAPTAIN_AMERICA",
+      
+    Make: "Honda",
  
-     size: 'Medium',
+    Model:'Civic',
  
-     cost: 17.4
+    Price:22000
  
     });
  
-    let instance3 = new Costume(
+    let instance3 = new Car(
  
      {
+      
+    Make: "Ford",
  
-      costume_type: "THOR",
+    Model:'F-150',
  
-      size: 'Extra Large',
- 
-      cost: 20.5
+    Price:3500
  
      });
  
@@ -127,12 +128,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/cars', carsRouter);
+app.use('/car', carsRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 
 app.use("/resource", resourceRouter);
-app.use('/costumes', costumeRouter);
+app.use('/cars', carsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

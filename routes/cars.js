@@ -1,30 +1,6 @@
-var express = require('express');
+var express = require("express");
+const car_controlers = require("../controllers/CarController");
 var router = express.Router();
-
-const results = [
-  {
-    make: 'Toyota',
-    model: 'Camry',
-    price: 25000
-  },
-  {
-    make: 'Honda',
-    model: 'Civic',
-    price: 22000
-  },
-  {
-    make: 'Ford',
-    model: 'F-150',
-    price: 35000
-  }
-]
-
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('cars', { title: 'Search Results - cars', results: results });
-});
-
-
-
+// GET carss
+router.get("/", car_controlers.car_view_all_Page);
 module.exports = router;
