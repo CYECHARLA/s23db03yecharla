@@ -60,8 +60,7 @@ exports.car_detail = async function (req, res) {
     try {
         const car = await Car.findById(req.params.id);
         if (!car) {
-            
-            res.status(404).send("No instance to show details");
+            res.status(404).send("Car instance not found");
             return;
         }
         res.send(car);
@@ -69,6 +68,7 @@ exports.car_detail = async function (req, res) {
         res.status(500).send(`{"error": "${err}"}`);
     }
 };
+
 
 
 
@@ -122,19 +122,20 @@ exports.Car_delete = async function (req, res) {
     }
 };
 
-// Handle a show one view with id specified by query
+// Assuming this code is in your CarController.js file
 exports.car_view_one_Page = async function (req, res) {
-    console.log("single view for id " + req.query.id)
     try {
-        result = await Car.findById(req.query.id)
-        res.render('cardetail',
-            { title: 'car Detail', toShow: result });
-    }
-    catch (err) {
-        res.status(500)
-        res.send(`{'error': '${err}'}`);
+        const toShow = await Car.findById(req.params.id);
+        if (!toShow) {
+            res.status(404).send("Car instance not found");
+            return;
+        }
+        res.render('cardetail', { title: 'Car Details', toShow }); // Pass 'toShow' to the template
+    } catch (err) {
+        res.status(500).send(`{"error": "${err}"}`);
     }
 };
+
 
 // Handle building the view for creating a car.
 // No body, no in path parameter, no query.
@@ -150,21 +151,22 @@ exports.car_create_Page = function (req, res) {
     }
 };
 
-// Handle building the view for updating a car.
+// Handle building the view for updating an car.
 // query provides the id
 exports.car_update_Page = async function (req, res) {
     console.log("update view for item " + req.query.id)
     try {
-        let result = await Car.findById(req.query.id)
+        const result = await Car.findById(req.query.id)
         if (!result) {
-        
-            res.status(404).send("No instance to update");
+            res.status(404)
+            res.send('car not found');
             return;
         }
-        res.render('carupdate', { title: 'Car Update', toShow: result });
+        res.render('carupdate', { title: 'car Update', toShow: result });
     }
     catch (err) {
-        res.status(500).send(`{'error': '${err}'}`);
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
     }
 };
 
