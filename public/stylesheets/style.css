@@ -8,6 +8,50 @@ a {
 }
 
 .carAttr {
-  background-color: aquamarine;
+  background-color: rgb(187, 255, 127);
   width: 120px;
  }
+
+ /* Add custom outline style */
+.outline-form {
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+/* Modified styles for .outline-input */
+.outline-input {
+  border: 2px solid #4CAF50; /* Change border color */
+  border-radius: 5px;
+  padding: 10px; /* Adjust padding */
+  margin-bottom: 15px; /* Adjust margin */
+  background-color: #f2f2f2; /* Change background color */
+  color: #333; /* Change text color */
+}
+
+/* Modified styles for .outline-btn */
+.outline-btn {
+  border: 2px solid #ff2a00; /* Change border color */
+  padding: 12px 24px; /* Adjust padding */
+  border-radius: 5px;
+  background-color: #ff2a00; /* Keep the same background color */
+  color: #fff; /* Keep the same text color */
+}
+
+/* Adding red color and thick borders */
+.form-control.outline-input {
+  border: 3px solid rgb(0, 42, 255); /* Thick red border */
+}
+
+.btn.btn-primary.outline-btn {
+  border: 3px solid rgba(255, 0, 0, 0.619); /* Thick red border */
+  color: red; /* Red text color */
+}
+
+<!-- In your layout.pug or HTML file, add the Bootstrap CDN link -->
+link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
+
+
+
+

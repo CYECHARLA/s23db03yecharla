@@ -56,20 +56,20 @@ exports.car_update_put = function (req, res) {
 
 // Handle Car detail on GET.
 exports.car_detail = async function (req, res) {
-    console.log("detail" + req.params.id)
+    console.log("detail " + req.params.id);
     try {
         const car = await Car.findById(req.params.id);
-        if (car == null) {
-            res.status(404);
-            res.send(`{"error": "Car not found"}`);
-        } else {
-            res.send(car);
+        if (!car) {
+            
+            res.status(404).send("No instance to show details");
+            return;
         }
+        res.send(car);
     } catch (err) {
-        res.status(500);
-        res.send(`{"error": ${err}}`);
+        res.status(500).send(`{"error": "${err}"}`);
     }
 };
+
 
 
 // Handle Car update form on PUT.
@@ -156,13 +156,18 @@ exports.car_update_Page = async function (req, res) {
     console.log("update view for item " + req.query.id)
     try {
         let result = await Car.findById(req.query.id)
-        res.render('carupdate', { title: 'car Update', toShow: result });
+        if (!result) {
+        
+            res.status(404).send("No instance to update");
+            return;
+        }
+        res.render('carupdate', { title: 'Car Update', toShow: result });
     }
     catch (err) {
-        res.status(500)
-        res.send(`{'error': '${err}'}`);
+        res.status(500).send(`{'error': '${err}'}`);
     }
 };
+
 
 // Handle a delete one view with id from query
 exports.car_delete_Page = async function (req, res) {
