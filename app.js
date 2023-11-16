@@ -40,11 +40,11 @@ db.once("open", function(){console.log("Connection to DB succeeded")})
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var carsRouter = require('./routes/car');
+var carsRouter = require('./routes/cars');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
-
 var Car = require("./models/car");
+
 
 async function recreateDB(){
 
@@ -134,6 +134,7 @@ app.use('/choose', chooseRouter);
 
 app.use("/resource", resourceRouter);
 app.use('/cars', carsRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let carid = toShow._id
+ - let Make = toShow.Make
+ - let Price = toShow.Price
+ - let Model = toShow.Model 
+ div
+ div.row
+ div(class='carAttr mr-3') Car ID is:
+ div #{carid}
+ div.row
+ div(class='carAttr mr-3') Car Make is:
+ div #{Make}
+ div.row
+ div(class='carAttr mr-3') Car Model is:
+ div #{Model}
+ div.row
+ div(class='carAttr mr-3') Car Price is:
+ div #{Price}

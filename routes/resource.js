@@ -10,7 +10,7 @@ router.get('/', api_controller.api);
 // POST request for creating a Car.
 router.post('/cars', car_controller.car_create_post);
 // DELETE request to delete Car.
-router.delete('/cars/:id', car_controller.car_delete);
+router.delete('/cars/:id', car_controller.Car_delete);
 // PUT request to update Car.
 router.put('/cars/:id', car_controller.car_update_put);
 // GET request for one Car.
