@@ -1,6 +1,17 @@
-each item in theCars
-  div
-    p Make - #{item.Make}
-    p Model - #{item.Model}
-    p Price  - #{item.Price}
-    br
+extends layout
+block content
+  h1= title
+  - let items = results
+  each item in theCars
+    - let destination = `dispatch("/cars/update?id=${item._id}")`
+    div
+      p Make - #{item.Make}
+      p Model - #{item.Model}
+      p Price - #{item.Price}
+      button.btn(class="btn-primary ml-1", onclick=destination) Update
+      br
+      br
+  script.
+    function dispatch(path) {
+      window.location.href = path;
+    }
