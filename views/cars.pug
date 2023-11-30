@@ -1,14 +1,15 @@
 extends layout
 block content
   h1= title
-  - let items = results
+  button.btn(class="btn-info", onclick=`dispatch('/cars/create')`) Add new Car
   each item in theCars
-    - let destination = `dispatch("/cars/update?id=${item._id}")`
     div
       p Make - #{item.Make}
       p Model - #{item.Model}
       p Price - #{item.Price}
-      button.btn(class="btn-primary ml-1", onclick=destination) Update
+      button.btn(class="btn-primary ml-1", onclick=`dispatch('/cars/update?id=${item._id}')`) Update
+      button.btn(class="btn-success ml-1", onclick=`dispatch('/cars/detail?id=${item._id}')`) Details
+      button.btn(class="btn-dark ml-1", onclick=`dispatch('/cars/delete?id=${item._id}')`) Delete
       br
       br
   script.

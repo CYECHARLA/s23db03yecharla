@@ -15,7 +15,15 @@ block content
     script.
       document.forms['CarForm'].addEventListener('submit', (event) => {
         event.preventDefault();
-        // TODO do something here to show user that form is being submitted
+        const priceInput = document.getElementById('Price');
+        const priceValue = parseFloat(priceInput.value);
+        
+        if (priceValue > 50000) {
+          alert('Price cannot exceed 50,000');
+          return; // Prevent form submission if price exceeds the limit
+        }
+        
+        // If price is within limits, continue with form submission
         fetch(event.target.action, {
           method: 'POST',
           body: new URLSearchParams(new FormData(event.target)) // event.target is the form
