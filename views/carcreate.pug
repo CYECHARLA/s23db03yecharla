@@ -11,8 +11,21 @@ block content
     div.form-group
       label.carAttr(for='Price') Car price
       input#Price(type='number', name='Price')
-    input(type="submit")
+    input(type="submit", onclick="validateCarModel(event)")
     script.
+      function validateCarModel(event) {
+        event.preventDefault();
+        const modelInput = document.getElementById('Model');
+        const modelValue = modelInput.value.trim();
+        
+        if (modelValue.length <= 10) {
+          alert('Car model should be greater than 10 characters.');
+          return; // Prevent form submission if the model length is not valid
+        }
+        
+        // If model length is valid, continue with form submission
+        document.getElementById('CarForm').submit();
+      }
       document.forms['CarForm'].addEventListener('submit', (event) => {
         event.preventDefault();
         const priceInput = document.getElementById('Price');
